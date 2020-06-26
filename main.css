@@ -1,0 +1,31 @@
+body {
+  font-family: serif;
+}
+
+svg {
+  margin: 10px;
+}
+
+.node {
+  cursor: crosshair;
+}
+
+.node rect, .node ellipse, .node polygon, .node circle {
+  stroke: black;
+  fill: rgba(0, 0, 0, 2%);
+}
+
+.edgePath path {
+  stroke: black;
+}
+
+.tooltip {
+  position: absolute;
+  pointer-events: none;
+
+  padding: 5px;
+  border: 1px solid gray;
+  border-radius: 2px;
+  background: white;
+  color: black;
+}
