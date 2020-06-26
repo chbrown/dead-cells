@@ -1,0 +1,63 @@
+/*
+Render like so:
+
+    dot -Tpdf levels.dot >| levels.pdf
+
+DOT syntax references:
+- https://www.graphviz.org/doc/info/lang.html
+- https://www.graphviz.org/doc/info/attrs.html
+*/
+digraph {
+  // nodes
+  PrisonersQuarters [label="Prisoners' Quarters"]
+  ToxicSewers [label="Toxic Sewers"]
+  PromenadeOfTheCondemned [label="Promenade of the Condemned"]
+  Ramparts [label="Ramparts"]
+  BlackBridge [label="Black Bridge" shape=box boss="Concierge"]
+  ForgottenSepulcher [label="Forgotten Sepulcher"]
+  Ossuary [label="Ossuary" shops="cook"]
+  PrisonDepths [label="Prison Depths"]
+  AncientSewers [label="Ancient Sewers"]
+  InsufferableCrypt [label="Insufferable Crypt" shape=box boss="Conjunctivius"]
+  SlumberingSanctuary [label="Slumbering Sanctuary"]
+  Graveyard [label="Graveyard"]
+  StiltVillage [label="Stilt Village"]
+  ClockTower [label="Clock Tower"]
+  ClockRoom [label="Clock Room"]
+  HighPeakCastle [label="High Peak Castle"]
+  ThroneRoom [label="Throne Room" shape=box boss="Hand of the King"]
+
+  // edges
+  PrisonersQuarters -> {ToxicSewers PromenadeOfTheCondemned} [bonus="2m00s / 30 kills" refill="no"]
+
+  ToxicSewers -> {AncientSewers Ramparts} [bonus="8m00s / 60 kills" refill="yes"]
+
+  PromenadeOfTheCondemned -> {Ramparts Ossuary PrisonDepths} [bonus="8m00s / 60 kills" refill="yes"]
+
+  PrisonDepths -> Ossuary [bonus="none" refill="yes"]
+  PrisonDepths -> AncientSewers [via="door requiring 1 boss cell"]
+
+  AncientSewers -> InsufferableCrypt [bonus="60 kills" refill="no"]
+
+  InsufferableCrypt -> SlumberingSanctuary [bonus="???" refill="no" legendary_forge="yes"]
+  InsufferableCrypt -> Graveyard [bonus="19m30s / no damage" refill="yes" legendary_forge="yes" via="spider rune"]
+
+  Graveyard -> ForgottenSepulcher [bonus="26m00s / 60 kills" refill="yes"]
+  Graveyard -> Unknown [via="Architect's Key"]
+
+  Ramparts -> BlackBridge [bonus="60 kills" refill="no"]
+  Ossuary -> BlackBridge [bonus="60 kills" refill="no"]
+
+  BlackBridge -> StiltVillage [bonus="15m00s / no damage" refill="yes" legendary_forge="yes"]
+  BlackBridge -> SlumberingSanctuary [bonus="15m00s / no damage" refill="yes" legendary_forge="yes" via="spider rune"]
+
+  SlumberingSanctuary -> ClockTower [bonus="???" refill="no"]
+  SlumberingSanctuary -> ForgottenSepulcher [bonus="26m00s / 60 kills" refill="yes"]
+  StiltVillage -> {ClockTower ForgottenSepulcher} [bonus="26m00s / 60 kills" refill="yes"]
+
+  {ClockTower ForgottenSepulcher} -> ClockRoom [bonus="60 kills" refill="yes"]
+
+  ClockRoom -> HighPeakCastle [bonus="no damage" refill="yes" legendary_forge="yes"]
+
+  HighPeakCastle -> ThroneRoom [bonus="60 kills" refill="no"]
+}
