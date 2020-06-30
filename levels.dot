@@ -42,46 +42,37 @@ digraph {
   ThroneRoom [label="Throne Room" shape=box boss="Hand of the King"]
 
   // edges
-  PrisonersQuarters -> {ToxicSewers PromenadeOfTheCondemned DilapidatedArboretum} [bonus="2m00s / 30 kills" refill="no"]
+  PrisonersQuarters -> {PromenadeOfTheCondemned ToxicSewers DilapidatedArboretum} [bonus="2m00s / 30 kills" refill="no"]
 
-  ToxicSewers -> {AncientSewers Ramparts} [bonus="8m00s / 60 kills" refill="yes"]
-
-  PromenadeOfTheCondemned -> {Ramparts Ossuary PrisonDepths MorassOfTheBanished} [bonus="8m00s / 60 kills" refill="yes"]
-
+  PromenadeOfTheCondemned -> {Ramparts PrisonDepths Ossuary MorassOfTheBanished} [bonus="8m00s / 60 kills" refill="yes"]
+  ToxicSewers -> {Ramparts AncientSewers} [bonus="8m00s / 60 kills" refill="yes"]
   DilapidatedArboretum -> {Ramparts PrisonDepths}
   DilapidatedArboretum -> MorassOfTheBanished [bonus="60 kills"]
 
+  Ramparts -> BlackBridge [bonus="60 kills" refill="no"]
   PrisonDepths -> Ossuary [bonus="none" refill="yes"]
   PrisonDepths -> AncientSewers [via="door requiring 1 boss cell"]
-
-  AncientSewers -> InsufferableCrypt [bonus="60 kills" refill="no"]
-
-  MorassOfTheBanished -> Nest [bonus="60 kills" refill="1 flask"]
-
-  InsufferableCrypt -> SlumberingSanctuary [bonus="???" refill="no" legendary_forge="yes"]
-  InsufferableCrypt -> Graveyard [bonus="19m30s / no damage" refill="yes" legendary_forge="yes" via="spider rune"]
-
-  Nest -> {StiltVillage Graveyard} [bonus="15m00s / no damage" refill="full" legendary_forge="yes"]
-
-  Graveyard -> ForgottenSepulcher [bonus="26m00s / 60 kills" refill="yes"]
-  Graveyard -> Cavern [via="Cavern Key"]
-
-  Ramparts -> BlackBridge [bonus="60 kills" refill="no"]
   Ossuary -> BlackBridge [bonus="60 kills" refill="no"]
+  AncientSewers -> InsufferableCrypt [bonus="60 kills" refill="no"]
+  MorassOfTheBanished -> Nest [bonus="60 kills" refill="1 flask"]
 
   BlackBridge -> StiltVillage [bonus="15m00s / no damage" refill="yes" legendary_forge="yes"]
   BlackBridge -> SlumberingSanctuary [bonus="15m00s / no damage" refill="yes" legendary_forge="yes" via="spider rune"]
+  InsufferableCrypt -> SlumberingSanctuary [bonus="???" refill="no" legendary_forge="yes"]
+  InsufferableCrypt -> Graveyard [bonus="19m30s / no damage" refill="yes" legendary_forge="yes" via="spider rune"]
+  Nest -> {StiltVillage Graveyard} [bonus="15m00s / no damage" refill="full" legendary_forge="yes"]
 
+  StiltVillage -> {ClockTower ForgottenSepulcher} [bonus="26m00s / 60 kills" refill="yes"]
   SlumberingSanctuary -> ClockTower [bonus="???" refill="no"]
   SlumberingSanctuary -> ForgottenSepulcher [bonus="26m00s / 60 kills" refill="yes"]
-  StiltVillage -> {ClockTower ForgottenSepulcher} [bonus="26m00s / 60 kills" refill="yes"]
+  Graveyard -> ForgottenSepulcher [bonus="26m00s / 60 kills" refill="yes"]
+  Graveyard -> Cavern [via="Cavern Key"]
 
   {ClockTower ForgottenSepulcher} -> ClockRoom [bonus="60 kills" refill="yes"]
-
   Cavern -> GuardiansHaven
-  GuardiansHaven -> Unknown
 
   ClockRoom -> HighPeakCastle [bonus="no damage" refill="yes" legendary_forge="yes"]
+  GuardiansHaven -> Unknown
 
   HighPeakCastle -> ThroneRoom [bonus="60 kills" refill="no"]
 }
