@@ -10,21 +10,29 @@ DOT syntax references:
 digraph {
   // nodes
   PrisonersQuarters [label="Prisoners' Quarters"]
-  ToxicSewers [label="Toxic Sewers"]
+
   PromenadeOfTheCondemned [label="Promenade of the Condemned"]
+  ToxicSewers [label="Toxic Sewers"]
+
   Ramparts [label="Ramparts"]
-  BlackBridge [label="Black Bridge" shape=box boss="Concierge"]
-  ForgottenSepulcher [label="Forgotten Sepulcher"]
-  Ossuary [label="Ossuary" shops="cook"]
   PrisonDepths [label="Prison Depths"]
+  Ossuary [label="Ossuary" shops="cook"]
   AncientSewers [label="Ancient Sewers"]
+
+  BlackBridge [label="Black Bridge" shape=box boss="Concierge"]
   InsufferableCrypt [label="Insufferable Crypt" shape=box boss="Conjunctivius"]
+
+  StiltVillage [label="Stilt Village"]
   SlumberingSanctuary [label="Slumbering Sanctuary"]
   Graveyard [label="Graveyard"]
-  StiltVillage [label="Stilt Village"]
+
   ClockTower [label="Clock Tower"]
+  ForgottenSepulcher [label="Forgotten Sepulcher"]
+
   ClockRoom [label="Clock Room" shape=box boss="The Time Keeper"]
+
   HighPeakCastle [label="High Peak Castle"]
+
   ThroneRoom [label="Throne Room" shape=box boss="Hand of the King"]
 
   // edges
