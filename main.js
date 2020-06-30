@@ -78,6 +78,8 @@ const dotShapeToDagreShape = new Map([
 fetch('levels.dot').then(response => response.text()).then(text => {
   const g = graphlibDot.read(text)
 
+  g.setGraph({ranker: 'tight-tree'})
+
   // set defaults
   g.nodes().forEach(v => {
     const node = g.node(v)
