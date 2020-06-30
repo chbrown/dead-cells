@@ -23,7 +23,7 @@ digraph {
   Graveyard [label="Graveyard"]
   StiltVillage [label="Stilt Village"]
   ClockTower [label="Clock Tower"]
-  ClockRoom [label="Clock Room"]
+  ClockRoom [label="Clock Room" shape=box boss="The Time Keeper"]
   HighPeakCastle [label="High Peak Castle"]
   ThroneRoom [label="Throne Room" shape=box boss="Hand of the King"]
 
