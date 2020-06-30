@@ -13,14 +13,17 @@ digraph {
 
   PromenadeOfTheCondemned [label="Promenade of the Condemned"]
   ToxicSewers [label="Toxic Sewers"]
+  DilapidatedArboretum [label="The Dilapidated Arboretum"]
 
   Ramparts [label="Ramparts"]
   PrisonDepths [label="Prison Depths"]
   Ossuary [label="Ossuary" shops="cook"]
   AncientSewers [label="Ancient Sewers"]
+  MorassOfTheBanished [label="The Morass of the Banished"]
 
   BlackBridge [label="Black Bridge" shape=box boss="Concierge"]
   InsufferableCrypt [label="Insufferable Crypt" shape=box boss="Conjunctivius"]
+  Nest [label="The Nest" shape=box boss="Mama Tick"]
 
   StiltVillage [label="Stilt Village"]
   SlumberingSanctuary [label="Slumbering Sanctuary"]
@@ -28,30 +31,40 @@ digraph {
 
   ClockTower [label="Clock Tower"]
   ForgottenSepulcher [label="Forgotten Sepulcher"]
+  Cavern [label="Cavern"]
 
   ClockRoom [label="Clock Room" shape=box boss="The Time Keeper"]
+  GuardiansHaven [label="Guardian's Haven" shape=box boss="Giant"]
 
   HighPeakCastle [label="High Peak Castle"]
+  Unknown [label="???"]
 
   ThroneRoom [label="Throne Room" shape=box boss="Hand of the King"]
 
   // edges
-  PrisonersQuarters -> {ToxicSewers PromenadeOfTheCondemned} [bonus="2m00s / 30 kills" refill="no"]
+  PrisonersQuarters -> {ToxicSewers PromenadeOfTheCondemned DilapidatedArboretum} [bonus="2m00s / 30 kills" refill="no"]
 
   ToxicSewers -> {AncientSewers Ramparts} [bonus="8m00s / 60 kills" refill="yes"]
 
-  PromenadeOfTheCondemned -> {Ramparts Ossuary PrisonDepths} [bonus="8m00s / 60 kills" refill="yes"]
+  PromenadeOfTheCondemned -> {Ramparts Ossuary PrisonDepths MorassOfTheBanished} [bonus="8m00s / 60 kills" refill="yes"]
+
+  DilapidatedArboretum -> {Ramparts PrisonDepths}
+  DilapidatedArboretum -> MorassOfTheBanished [bonus="60 kills"]
 
   PrisonDepths -> Ossuary [bonus="none" refill="yes"]
   PrisonDepths -> AncientSewers [via="door requiring 1 boss cell"]
 
   AncientSewers -> InsufferableCrypt [bonus="60 kills" refill="no"]
 
+  MorassOfTheBanished -> Nest [bonus="60 kills" refill="1 flask"]
+
   InsufferableCrypt -> SlumberingSanctuary [bonus="???" refill="no" legendary_forge="yes"]
   InsufferableCrypt -> Graveyard [bonus="19m30s / no damage" refill="yes" legendary_forge="yes" via="spider rune"]
 
+  Nest -> {StiltVillage Graveyard} [bonus="15m00s / no damage" refill="full" legendary_forge="yes"]
+
   Graveyard -> ForgottenSepulcher [bonus="26m00s / 60 kills" refill="yes"]
-  Graveyard -> Unknown [via="Architect's Key"]
+  Graveyard -> Cavern [via="Cavern Key"]
 
   Ramparts -> BlackBridge [bonus="60 kills" refill="no"]
   Ossuary -> BlackBridge [bonus="60 kills" refill="no"]
@@ -64,6 +77,9 @@ digraph {
   StiltVillage -> {ClockTower ForgottenSepulcher} [bonus="26m00s / 60 kills" refill="yes"]
 
   {ClockTower ForgottenSepulcher} -> ClockRoom [bonus="60 kills" refill="yes"]
+
+  Cavern -> GuardiansHaven
+  GuardiansHaven -> Unknown
 
   ClockRoom -> HighPeakCastle [bonus="no damage" refill="yes" legendary_forge="yes"]
 
