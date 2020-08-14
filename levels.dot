@@ -17,6 +17,7 @@ digraph {
 
   Ramparts [label="Ramparts"]
   PrisonDepths [label="Prison Depths"]
+  CorruptedPrison [label="Corrupted Prison"]
   Ossuary [label="Ossuary" shops="cook"]
   AncientSewers [label="Ancient Sewers"]
   Morass [label="The Morass of the Banished"]
@@ -46,12 +47,15 @@ digraph {
 
   Promenade -> {Ramparts PrisonDepths Ossuary Morass} [bonus="8m00s / 60 kills" refill="yes"]
   ToxicSewers -> {Ramparts AncientSewers} [bonus="8m00s / 60 kills" refill="yes"]
+  ToxicSewers -> CorruptedPrison
+  CorruptedPrison -> {Ramparts AncientSewers}
   Arboretum -> {Ramparts PrisonDepths}
   Arboretum -> Morass [bonus="60 kills"]
 
   Ramparts -> BlackBridge [bonus="60 kills" refill="no"]
   PrisonDepths -> Ossuary [bonus="none" refill="yes"]
   PrisonDepths -> AncientSewers [via="door requiring 1 boss cell"]
+  PrisonDepths -> Morass
   Ossuary -> BlackBridge [bonus="60 kills" refill="no"]
   AncientSewers -> Crypt [bonus="60 kills" refill="no"]
   Morass -> Nest [bonus="60 kills" refill="1 flask"]
